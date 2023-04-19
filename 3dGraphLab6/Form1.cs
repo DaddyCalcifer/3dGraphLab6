@@ -25,21 +25,7 @@ namespace _3dGraphLab6
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Glut.glutInit();
-            Glut.glutInitDisplayMode(Glut.GLUT_RGB | Glut.GLUT_DOUBLE | Glut.GLUT_DEPTH);
-            // отчитка окна 
-            Gl.glClearColor(255, 255, 255, 1);
-            // установка порта вывода в соответствии с размерами элемента anT 
-            Gl.glViewport(0, 0, AnT.Width, AnT.Height);
-            // настройка проекции 
-            Gl.glMatrixMode(Gl.GL_PROJECTION);
-            Gl.glLoadIdentity();
-            Glu.gluPerspective(45, (float)AnT.Width / (float)AnT.Height, 0.1, 200);
-            Gl.glMatrixMode(Gl.GL_MODELVIEW);
-            Gl.glLoadIdentity();
-            // настройка параметров OpenGL для визуализации 
-            Gl.glEnable(Gl.GL_DEPTH_TEST);
-            button2.BackColor = color;
+            LoadMaterials();
         }
         void Display()
         {
@@ -96,10 +82,14 @@ namespace _3dGraphLab6
         {
             Display();
             Gl.glViewport(0, 0, AnT.Width, AnT.Height);
-            var random = new Random();
 
-            Gl.glColor3d(color.R, color.G, color.B);
+            Gl.glColor3f(0,0,1);
+            Gl.glEnable(Gl.GL_DEPTH_TEST);
+            Gl.glEnable(Gl.GL_COLOR_MATERIAL);
+            Gl.glEnable(Gl.GL_LIGHTING);
+            Gl.glEnable(Gl.GL_LIGHT0);
             Gl.glPushMatrix();
+
             switch (tabControl1.SelectedIndex)
             {
                 case 0:
@@ -108,7 +98,7 @@ namespace _3dGraphLab6
                 case 1:      
                     Glut.glutSolidCylinder((double)cyl_radius.Value, (double)cyl_height.Value, (int)cyl_slices.Value, (int)cyl_stacks.Value);
                     break;   
-                case 2:      
+                case 2:
                     Glut.glutSolidCube((double)cube_size.Value);
                     break;   
                 case 3:      
@@ -143,7 +133,29 @@ namespace _3dGraphLab6
             color = colorDialog1.Color;
             button2.BackColor = color;
         }
-
+        public void LoadMaterials()
+        {
+            Glut.glutInit();
+            Glut.glutInitDisplayMode(Glut.GLUT_RGB | Glut.GLUT_DOUBLE | Glut.GLUT_DEPTH);
+            // отчитка окна 
+            Gl.glClearColor(255, 255, 255, 1);
+            // установка порта вывода в соответствии с размерами элемента anT 
+            Gl.glViewport(0, 0, AnT.Width, AnT.Height);
+            // настройка проекции 
+            Gl.glMatrixMode(Gl.GL_PROJECTION);
+            Gl.glLoadIdentity();
+            Glu.gluPerspective(45, (float)AnT.Width / (float)AnT.Height, 0.1, 200);
+            Gl.glMatrixMode(Gl.GL_MODELVIEW);
+            Gl.glLoadIdentity();
+            // настройка параметров OpenGL для визуализации 
+            button2.BackColor = color;
+            Gl.glEnable(Gl.GL_DEPTH_TEST);
+            Gl.glEnable(Gl.GL_COLOR_MATERIAL);
+            Gl.glEnable(Gl.GL_LIGHTING);
+            Gl.glEnable(Gl.GL_LIGHT0);
+        }
         private void button3_Click(object sender, EventArgs e) => DrawSolid();
+
+        private void button4_Click(object sender, EventArgs e){}
     }
 }

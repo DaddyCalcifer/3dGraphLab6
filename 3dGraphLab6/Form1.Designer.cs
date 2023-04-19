@@ -894,9 +894,9 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(774, 348);
+            this.button2.Location = new System.Drawing.Point(774, 396);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(39, 90);
+            this.button2.Size = new System.Drawing.Size(39, 42);
             this.button2.TabIndex = 4;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -911,7 +911,7 @@
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.Location = new System.Drawing.Point(533, 348);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(235, 42);
+            this.button3.Size = new System.Drawing.Size(280, 42);
             this.button3.TabIndex = 5;
             this.button3.Text = "Render solid";
             this.button3.UseVisualStyleBackColor = true;
